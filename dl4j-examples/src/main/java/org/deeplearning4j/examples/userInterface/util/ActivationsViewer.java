@@ -113,12 +113,12 @@ public class ActivationsViewer extends Application {
             sampleCoordinatesByLayer[layerIndex] = list;
             Layer layer = network.getLayer(layerIndex);
             INDArray input = layer.input();
-            int[] shape = input.shape();
+            long[] shape = input.shape();
             int repeats = 0; // used to avoid the (rare) case in which we try to add many duplicates.
             for (int r = 0; r < sampleSizePerLayer; r++) {
                 int[] sampleCoordinates = new int[shape.length];
                 for (int i = 1; i < shape.length; i++) {
-                    sampleCoordinates[i] = random.nextInt(shape[i]);
+                    sampleCoordinates[i] = random.nextInt((int)shape[i]);
                 }
                 if (isDuplicate(sampleCoordinates, list) && repeats < 20) {
                     r--;

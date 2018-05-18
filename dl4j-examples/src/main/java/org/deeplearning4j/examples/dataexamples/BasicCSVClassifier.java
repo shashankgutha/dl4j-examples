@@ -153,7 +153,7 @@ public class BasicCSVClassifier {
      * @return
      */
     public static float[] getFloatArrayFromSlice(INDArray rowSlice){
-        float[] result = new float[rowSlice.columns()];
+        float[] result = new float[(int)rowSlice.columns()];
         for (int i = 0; i < rowSlice.columns(); i++) {
             result[i] = rowSlice.getFloat(i);
         }

@@ -148,7 +148,7 @@ public class MultiDigitNumberRecognition {
             MultiDataSet mds = iterator.next();
             INDArray[]  output = model.output(mds.getFeatures());
             INDArray[] labels = mds.getLabels();
-            int dataNum = batchSize > output[0].rows() ? output[0].rows() : batchSize;
+            long dataNum = batchSize > output[0].rows() ? output[0].rows() : batchSize;
             for (int dataIndex = 0;  dataIndex < dataNum; dataIndex ++) {
                 String reLabel = "";
                 String peLabel = "";

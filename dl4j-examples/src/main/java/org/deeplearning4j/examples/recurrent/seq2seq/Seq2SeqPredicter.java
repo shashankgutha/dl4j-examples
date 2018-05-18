@@ -42,11 +42,11 @@ public class Seq2SeqPredicter {
     public INDArray output(MultiDataSet testSet, boolean print) {
 
         INDArray correctOutput = testSet.getLabels()[0];
-        INDArray ret = Nd4j.zeros(correctOutput.shape());
+        INDArray ret = null;    //TODO Nd4j.zeros(correctOutput.shape());
         decoderInputTemplate = testSet.getFeatures()[1].dup();
 
         int currentStepThrough = 0;
-        int stepThroughs = correctOutput.size(2)-1;
+        int stepThroughs = (int)correctOutput.size(2)-1;
 
         while (currentStepThrough < stepThroughs) {
             if (print) {

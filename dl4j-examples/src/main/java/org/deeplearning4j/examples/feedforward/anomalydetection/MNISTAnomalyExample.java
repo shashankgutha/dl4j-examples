@@ -100,7 +100,7 @@ public class MNISTAnomalyExample {
         for( int i=0; i<featuresTest.size(); i++ ){
             INDArray testData = featuresTest.get(i);
             INDArray labels = labelsTest.get(i);
-            int nRows = testData.rows();
+            long nRows = testData.rows();
             for( int j=0; j<nRows; j++){
                 INDArray example = testData.getRow(j);
                 int digit = (int)labels.getDouble(j);

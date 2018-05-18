@@ -31,6 +31,7 @@ import org.deeplearning4j.nn.conf.layers.BaseLayer;
 import org.deeplearning4j.nn.gradient.Gradient;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.nd4j.linalg.api.ndarray.INDArray;
+import org.nd4j.linalg.util.ArrayUtil;
 
 import javax.imageio.ImageIO;
 import java.awt.Robot;
@@ -445,10 +446,10 @@ public class GradientsAndParamsViewer extends Application {
         return value;
     }
 
-    private List<Integer> chooseRandomSample(int[] shape) {
+    private List<Integer> chooseRandomSample(long[] shape) {
         List<Integer> list = new ArrayList<>(shape.length);
         for (int i = 0; i < shape.length; i++) {
-            list.add(random.nextInt(shape[i]));
+            list.add(random.nextInt((int)shape[i]));
         }
         return list;
     }
@@ -460,10 +461,10 @@ public class GradientsAndParamsViewer extends Application {
         System.out.println("Entering chooseSampleCoordinates with map.size() = " + map.size() + " and sampleSizePerLayer= " + sampleSizePerLayer);
         for (String key : map.keySet()) {
             INDArray array = map.get(key);
-            int[] shape = array.shape();
-            System.out.println("  Gradient map shape for " + key + " is " + GradientsAndParamsListener.toString(shape));
+            long[] shape = array.shape();
+            System.out.println("  Gradient map shape for " + key + " is " + Arrays.toString(shape));
 
-            int sampleLengthWeWillUse = Math.min(sampleSizePerLayer, product(shape));
+            int sampleLengthWeWillUse = Math.min(sampleSizePerLayer, ArrayUtil.prod(shape));
             Set<List<Integer>> chosen = new HashSet<>();
             // TODO: this could be slow if product(shape) is close to sampleSizePerLayer
             while (chosen.size() < sampleLengthWeWillUse) {

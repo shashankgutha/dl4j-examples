@@ -129,7 +129,7 @@ public class CustomLossExample {
                 INDArray grad = lossfn.computeGradient(label,preOut,activation,null);
                 NdIndexIterator iterPreOut = new NdIndexIterator(preOut.shape());
                 while (iterPreOut.hasNext()) {
-                    int[] next = iterPreOut.next();
+                    long[] next = iterPreOut.next();
                     //checking gradient with total score wrt to each output feature in label
                     double before = preOut.getDouble(next);
                     preOut.putScalar(next, before + epsilon);

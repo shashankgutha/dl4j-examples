@@ -95,10 +95,10 @@ public class NumpyCheatSheat {
 
         /* C. INSPECTING PROPERTIES */
         // 1. arr.size - Returns number of elements in arr
-        int size = fourByFiveRandomZeroToOne.length();
+        long size = fourByFiveRandomZeroToOne.length();
         System.out.println("Array size: " + size);
         // 2. arr.shape - Returns dimensions of arr (rows, columns)
-        int [] shape = fourByFiveRandomZeroToOne.shape();
+        long[] shape = fourByFiveRandomZeroToOne.shape();
         System.out.println("Array shape: " + Arrays.toString(shape));
         // 3. arr.dtype - Returns type of elements in arr
         String type = CustomOperations.type(fourByFiveRandomZeroToOne);

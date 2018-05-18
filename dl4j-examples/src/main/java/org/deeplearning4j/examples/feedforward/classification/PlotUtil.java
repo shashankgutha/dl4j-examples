@@ -81,7 +81,7 @@ public class PlotUtil {
     /**Create data for the background data set
      */
     private static XYZDataset createBackgroundData(INDArray backgroundIn, INDArray backgroundOut) {
-        int nRows = backgroundIn.rows();
+        int nRows = (int)backgroundIn.rows();
         double[] xValues = new double[nRows];
         double[] yValues = new double[nRows];
         double[] zValues = new double[nRows];
@@ -100,11 +100,11 @@ public class PlotUtil {
 
     //Training data
     private static XYDataset createDataSetTrain(INDArray features, INDArray labels ){
-        int nRows = features.rows();
+        long nRows = features.rows();
 
-        int nClasses = labels.columns();
+        long nClasses = labels.columns();
 
-        XYSeries[] series = new XYSeries[nClasses];
+        XYSeries[] series = new XYSeries[(int)nClasses];
         for( int i=0; i<series.length; i++) series[i] = new XYSeries("Class " + String.valueOf(i));
         INDArray argMax = Nd4j.getExecutioner().exec(new IMax(labels), 1);
         for( int i=0; i<nRows; i++ ){
@@ -119,9 +119,9 @@ public class PlotUtil {
 
     //Test data
     private static XYDataset createDataSetTest(INDArray features, INDArray labels, INDArray predicted ){
-        int nRows = features.rows();
+        long nRows = features.rows();
 
-        int nClasses = labels.columns();
+        int nClasses = (int)labels.columns();
 
         XYSeries[] series = new XYSeries[nClasses*nClasses];    //new XYSeries("Data");
         for( int i=0; i<nClasses*nClasses; i++){

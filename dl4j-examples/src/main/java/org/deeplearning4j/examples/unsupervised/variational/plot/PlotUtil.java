@@ -121,11 +121,11 @@ public class PlotUtil {
 
     //Test data
     private static XYDataset createDataSet(INDArray features, INDArray labelsOneHot){
-        int nRows = features.rows();
+        long nRows = features.rows();
 
-        int nClasses = labelsOneHot.columns();
+        long nClasses = labelsOneHot.columns();
 
-        XYSeries[] series = new XYSeries[nClasses];
+        XYSeries[] series = new XYSeries[(int)nClasses];
         for( int i=0; i<nClasses; i++){
             series[i] = new XYSeries(String.valueOf(i));
         }

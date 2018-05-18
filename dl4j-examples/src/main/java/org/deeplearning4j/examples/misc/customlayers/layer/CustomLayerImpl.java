@@ -36,7 +36,7 @@ public class CustomLayerImpl extends BaseLayer<CustomLayer> { //Generic paramete
          */
 
         INDArray output = preOutput(training, workspaceMgr);
-        int columns = output.columns();
+        long columns = output.columns();
 
         INDArray firstHalf = output.get(NDArrayIndex.all(), NDArrayIndex.interval(0, columns / 2));
         INDArray secondHalf = output.get(NDArrayIndex.all(), NDArrayIndex.interval(columns / 2, columns));
@@ -82,7 +82,7 @@ public class CustomLayerImpl extends BaseLayer<CustomLayer> { //Generic paramete
         */
 
         INDArray activationDerivative = preOutput(true, workspaceMgr);
-        int columns = activationDerivative.columns();
+        long columns = activationDerivative.columns();
 
         INDArray firstHalf = activationDerivative.get(NDArrayIndex.all(), NDArrayIndex.interval(0, columns / 2));
         INDArray secondHalf = activationDerivative.get(NDArrayIndex.all(), NDArrayIndex.interval(columns / 2, columns));

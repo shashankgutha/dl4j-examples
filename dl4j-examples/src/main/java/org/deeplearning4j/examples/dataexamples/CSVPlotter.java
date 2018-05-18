@@ -152,7 +152,7 @@ public class CSVPlotter {
 			INDArray features = ds.getFeatures();
 			INDArray outputs= ds.getLabels();
 
-			int nRows = features.rows();
+			long nRows = features.rows();
 			XYSeries series = new XYSeries("S" + dscounter);
 			for( int i=0; i<nRows; i++ ){
 				series.add(features.getDouble(i), outputs.getDouble(i));

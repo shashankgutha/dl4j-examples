@@ -103,7 +103,7 @@ public class VaeMNISTAnomaly {
             DataSet ds = testIter.next();
             INDArray features = ds.getFeatures();
             INDArray labels = Nd4j.argMax(ds.getLabels(), 1);   //Labels as integer indexes (from one hot), shape [minibatchSize, 1]
-            int nRows = features.rows();
+            long nRows = features.rows();
 
             //Calculate the log probability for reconstructions as per An & Cho
             //Higher is better, lower is worse

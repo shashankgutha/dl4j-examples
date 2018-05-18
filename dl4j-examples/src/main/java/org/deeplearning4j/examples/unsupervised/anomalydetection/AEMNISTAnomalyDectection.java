@@ -84,7 +84,7 @@ public class AEMNISTAnomalyDectection {
         double totalScore = 0;
         for( int i = 0; i < featuresTest.size(); i ++ ){
             INDArray testData = featuresTest.get(i);
-            int nRows = testData.rows();
+            int nRows = (int)testData.rows();
             for( int j = 0; j < nRows; j ++){
                 INDArray example = testData.getRow(j);
                 double score = net.score(new DataSet(example,example));

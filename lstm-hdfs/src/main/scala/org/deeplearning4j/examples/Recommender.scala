@@ -8,7 +8,7 @@ import org.deeplearning4j.earlystopping.saver.LocalFileGraphSaver
 import org.deeplearning4j.earlystopping.scorecalc.DataSetLossCalculatorCG
 import org.deeplearning4j.earlystopping.termination.MaxEpochsTerminationCondition
 import org.deeplearning4j.earlystopping.trainer.EarlyStoppingGraphTrainer
-import org.deeplearning4j.examples.utils.{LoggingEarlyStoppingListener, ReflectionsHelper}
+import org.deeplearning4j.examples.utils.{LoggingEarlyStoppingListener}
 import org.deeplearning4j.nn.conf.{GradientNormalization, NeuralNetConfiguration, Updater}
 import org.deeplearning4j.nn.conf.layers.{GravesLSTM, RnnOutputLayer}
 import org.deeplearning4j.nn.graph.ComputationGraph
@@ -33,7 +33,7 @@ class Recommender(batchSize: Int = 50, featureSize: Int, nEpochs: Int, hiddenUni
 
   val logger = LoggerFactory.getLogger(this.getClass)
 
-  ReflectionsHelper.registerUrlTypes()
+  //ReflectionsHelper.registerUrlTypes()
 
   val tm = new ParameterAveragingTrainingMaster.Builder(5, 1)
     .averagingFrequency(averagingFrequency)
